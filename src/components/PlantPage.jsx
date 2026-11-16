@@ -6,8 +6,12 @@ import Search from "./Search";
 
 
 function PlantPage() {
-  
-useState[0]
+
+const [plants, setPlants] = useState([]);
+useEffect(() =>{
+
+},[]);
+
   return (
     <main>
       <NewPlantForm />
