@@ -4,9 +4,10 @@ import NewPlantForm from "./NewPlantForm";
 import PlantList from "./PlantList";
 import Search from "./Search";
 
-const [plants ,setPlants]=useState[0]
 
 function PlantPage() {
+  
+useState[0]
   return (
     <main>
       <NewPlantForm />
