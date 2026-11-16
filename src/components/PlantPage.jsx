@@ -9,8 +9,10 @@ function PlantPage() {
 
 const [plants, setPlants] = useState([]);
 useEffect(() =>{
-
-},[]);
+fetch("http://localhost:6001/plants")
+.then((r)=>r.json())
+.then((data)=>{
+  console.log(data)});
 
   return (
     <main>
