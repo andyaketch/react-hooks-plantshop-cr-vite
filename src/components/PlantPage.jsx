@@ -5,20 +5,28 @@ import Search from "./Search";
 
 function PlantPage() {
   const [plants, setPlants] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     fetch("http://localhost:6001/plants")
       .then((r) => r.json())
-      .then((data) => {
-        setPlants(data);
-      });
+      .then((data) => setPlants(data))
+      .catch((error) => console.error("Error fetching plants:", error));
   }, []);
+
+  function handleAddPlant(newPlant) {
+    setPlants((currentPlants) => [...currentPlants, newPlant]);
+  }
+
+  const filteredPlants = plants.filter((plant) =>
+    plant.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <main>
-      <NewPlantForm />
-      <Search />
-      <PlantList plants={plants} />
+      <NewPlantForm onAddPlant={handleAddPlant} />
+      <Search searchTerm={searchTerm} onSearchChange={setSearchTerm} />
+      <PlantList plants={filteredPlants} />
     </main>
   );
 }
